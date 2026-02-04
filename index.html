@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYU XUEJING - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-flex">
+            <h1 class="logo">LYU XUEJING</h1>
+            <nav class="nav">
+                <a href="#works" class="nav-circle">Works</a>
+                <a href="#about" class="nav-circle">About</a>
+                <a href="#contact" class="nav-circle">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="top">
+        <div class="hero__bg-shapes" aria-hidden="true">
+            <div class="shape shape--blue"></div>
+            <div class="shape shape--green"></div>
+            <div class="shape shape--yellow"></div>
+        </div>
+        
+        <div class="hero__content">
+        <div class="hero__title-area">
+            <h1 class="hero__main-title">WEB</h1>
+            
+            <div class="hero__outline-title">DESIGN</div>
+            
+            <div class="hero__portfolio-title">
+            <span class="char-p">P</span>
+            <span class="char-o color-blue">O</span>
+            <span class="char-r">R</span>
+            <span class="char-t">T</span>
+            <span class="char-f color-green">F</span>
+            <span class="char-o">O</span>
+            <span class="char-l">L</span>
+            <span class="char-i">I</span>
+            <span class="char-o color-yellow">O</span>
+            <div class="title-underline"></div>
+            </div>
+        </div>
+            
+        <!-- 行动按钮 -->
+        <div class="hero__cta" data-animate="fade-up" data-delay="600">
+            <a class="btn btn--primary" href="#works">
+                <span>作品を見る</span>
+                <svg class="btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </a>
+            <a class="btn btn--outline" href="#contact">
+            お問い合わせ
+            </a>
+        </div>
+        </div>
+    </section>
+
+
+    <section id="works" class="works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Works</h2>
+                <div class="wavy-line"></div>
+            </div>
+            
+            <div class="works-web-grid">
+                <a href="https://example.com/site1" target="_blank" class="work-item web-item">
+                    <div class="work-image">
+                        <img src="img/1.png" alt="Web作品1">
+                        <div class="hover-overlay">View Website →</div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-yellow">Webサイト</span>
+                        <h3 class="work-name">非公式ファンサイト 宇多田ヒカル</h3>
+                        <p class="work-desc">学校の課題：Webデザイン / コーディング</p>
+                    </div>
+                </a>
+
+                <a href="https://example.com/site2" target="_blank" class="work-item web-item">
+                    <div class="work-image">
+                        <img src="img/2.png" alt="Web作品2">
+                        <div class="hover-overlay">View Website →</div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-yellow">Webサイト</span>
+                        <h3 class="work-name">映画「リメンバー・ミー」サイト</h3>
+                        <p class="work-desc">学校の課題：デザイン / コーディング</p>
+                    </div>
+                </a>
+
+                <a href="https://example.com/site3" target="_blank" class="work-item web-item">
+                    <div class="work-image">
+                        <img src="img/3.png" alt="Web作品3">
+                        <div class="hover-overlay">View Website →</div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-yellow">ホームページ</span>
+                        <h3 class="work-name">カフェ「Cafe de PARIS」サイト</h3>
+                        <p class="work-desc">学校の課題：デザイン / コーディング</p>
+                    </div>
+                </a>
+
+                <a href="https://example.com/site4" target="_blank" class="work-item web-item">
+                    <div class="work-image">
+                        <img src="img/44.png" alt="Web作品4">
+                        <div class="hover-overlay">View Website →</div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-yellow">ホームページ</span>
+                        <h3 class="work-name">ブランジェリサイト「HAL Boulangerie」</h3>
+                        <p class="work-desc">学校の課題：デザイン / コーディング</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="works-graphic-grid">
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork5.png">
+                    <div class="work-image">
+                        <img src="img/allwork5.png" alt="Graphic1">
+                        <div class="hover-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-green">バナー制作</span>
+                        <h3 class="work-name">デザインバナー 動物</h3>
+                        <p class="work-desc">Photoshop / Illustrator</p>
+                    </div>
+                </div>
+
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork14.jpg">
+                    <div class="work-image">
+                        <img src="img/allwork14.jpg" alt="Graphic2">
+                        <div class="hover-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-green">バナー制作</span>
+                        <h3 class="work-name">デザインバナー お店</h3>
+                        <p class="work-desc">Photoshop / Illustrator</p>
+                    </div>
+                </div>
+
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork6.jpg">
+                    <div class="work-image">
+                        <img src="img/allwork6.jpg" alt="Graphic3">
+                        <div class="hover-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-green">バナー制作</span>
+                        <h3 class="work-name">デザインバナー 食べ物</h3>
+                        <p class="work-desc">Photoshop / Illustrator</p>
+                    </div>
+                </div>
+
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork9.png">
+                    <div class="work-image">
+                        <img src="img/allwork9.png" alt="Graphic4">
+                        <div class="hover-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-blue">設計コンペ</span>
+                        <h3 class="work-name">CBDエリアの都市デザイン</h3>
+                        <p class="work-desc">Illustrator / Figma / Indesign / Sketchup</p>
+                    </div>
+                </div>
+
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork12.png">
+                    <div class="work-image">
+                        <img src="img/allwork12.png" alt="Graphic5">
+                        <div class="hover-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-blue">設計コンペ</span>
+                        <h3 class="work-name">ウォーターフロントエリアのデザイン</h3>
+                        <p class="work-desc">Illustrator / Indesign / AutoCAD / Sketchup</p>
+                    </div>
+                </div>
+
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork11.png">
+                    <div class="work-image">
+                        <img src="img/allwork11.png" alt="Graphic6">
+                        <div class="hover-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <span class="work-category category-grey">手描きイラスト</span>
+                        <h3 class="work-name">街並みスケッチ</h3>
+                        <p class="work-desc">万年筆 / マーカー</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About</h2>
+                <div class="wavy-line"></div>
+            </div>
+            
+            <div class="about-layout" data-animate="fade-up" data-delay="200">
+                <!-- 左側：プロフィール写真 -->
+                <div class="about-photo">
+                    <div class="photo-frame">
+                        <img 
+                        src="img/photo1.png" 
+                        alt="プロフィール写真"
+                        loading="lazy"
+                        />
+                        <!-- 装飾的な円形テキスト -->
+                        <div class="circle-text" aria-hidden="true">
+                            <svg viewBox="0 0 200 200">
+                                <path id="curve" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" fill="transparent"/>
+                                <text>
+                                    <textPath href="#curve">
+                                    WELCOME TO MY PORTFOLIO • WELCOME TO MY PORTFOLIO •
+                                    </textPath>
+                                </text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 右側：自己紹介テキスト -->
+                <div class="about-content">
+                    <div class="about-title-wrapper">
+                        <h3 class="about-greeting">LYU  XUEJING</h3>
+                    </div>
+                    
+                    <div class="about-text">
+                        <p>
+                        都市デザイン・設計の実務経験があり、利用者の動線や心地よさを論理的に考える「設計力」を培ってきました。そこで磨いたデザインの基礎画力と、情報を整理・構成する力は私の強みです。
+                        </p>
+                        <p>
+                        デジタル領域での表現に惹かれ、現在は専門学校にてWebデザインとコーディングを習得中です。都市設計で培ったロジックと、Webの技術を掛け合わせ、説得力のあるデザインを構築します。
+                        </p>
+                    </div>
+                
+                    <!-- 詳しく見るボタン -->
+                    <div class="about-cta">
+                        <a href="resume.html" class="detail-link">
+                        <span class="detail-link__circle">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                        <span class="detail-link__text">詳しく見る</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div id="contact" class="contact-card container">
+            <div class="contact-inner">
+                <p class="contact-msg">ご覧いただき、有難うございました。お気軽にご連絡ください。</p>
+                <a href="mailto:lxj0686@gmail.com" class="btn btn-green">
+                    <svg class="icon-mail-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span>lxj0686@gmail.com</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-flex">
+                    <div class="footer-left">
+                        <h2 class="footer-logo">Lyu  Xuejing<br>Portfolio Site</h2>
+                    </div>
+                    <nav class="footer-nav">
+                        <a href="#works">Works</a>
+                        <a href="#about">About</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                </div>
+                <p class="copyright">© LYU XUEJING 2026</p>
+            </div>           
+        </div>
+    </footer>
+
+    <div id="image-modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="" alt="">
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
