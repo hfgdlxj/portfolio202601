@@ -1,0 +1,950 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. 基础设置 & 字体 (Base & Fonts)
+   ========================================================================== */
+body {
+    /* 使用更接近设计稿的无衬线字体 */
+    font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+    color: #333;
+    line-height: 1.8;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 防止装饰圆圈溢出导致横向滚动 */
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+.container {
+    max-width: 100%; /* 稍微收窄一点，符合设计稿的紧凑感 */
+    padding-left: 5%;   /* Logo 离左边的距离 */
+    padding-right: 5%;  /* 导航离右边的距离 */
+    margin: 0;
+}
+
+/* ==========================================================================
+   2. 头部导航 (Header)
+   ========================================================================== */
+.header {
+    padding: 30px 0;
+    background-color: transparent; /* 设计稿Header背景看起来是透明的 */
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #000;
+}
+
+.nav {
+    display: flex;
+    gap: 15px;
+}
+
+/* 导航圆圈样式 */
+.nav-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #333;
+    font-weight: 500;
+    background: #fff;
+}
+
+.nav-circle:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* ==========================================================================
+   3. Hero 区域 (Main Visual) - 封面更新版
+   ========================================================================== */
+:root {
+  --shape-blue: #E2E9F3;    /* 浅灰蓝色 - 用于圆圈1和按钮 */
+  --shape-green: #B2C6C1;   /* 莫兰迪绿 - 用于圆圈2 */
+  --shape-brown: #D4A35B;   /* 莫兰迪棕 - 用于圆圈3 */
+  --text-black: #000000;
+}
+
+.hero {
+  position: relative;
+  /* 问题1修复：通过 padding-top 给顶部导航栏留出空间，确保不遮挡文字 */
+  padding-top: 100px; 
+  min-height: 100vh;
+  display: flex;
+  align-items: center; 
+  padding-left: 8%;    
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* --- 背景装饰圆圈 --- */
+.hero__bg-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.9;
+  /* --- [新增] 这一行是关键，让圆圈重叠处变色 --- */
+  mix-blend-mode: multiply;
+}
+
+/* 圆圈1：左上 */
+/* --- 背景装饰：缩小尺寸并优化位置 --- */
+.shape--blue {
+  width: 28vw;        /* 从 45vw 缩小到 25vw */
+  height: 28vw;
+  background-color: var(--shape-blue);
+  top: 5%;           /* 稍微下移一点，避免被导航栏彻底遮挡 */
+  left: 45%;         /* 向右移动，避免太靠近左侧文字 */
+}
+
+.shape--green {
+  width: 28vw;        /* 从 40vw 缩小到 22vw */
+  height: 28vw;
+  background-color: var(--shape-green);
+  top: 25%;          /* 调整垂直间距 */
+  left: 58%;         /* 保持直线排列的比例 */
+  z-index: 1;
+}
+
+.shape--yellow {
+  width: 28vw;        /* 从 35vw 缩小到 20vw */
+  height: 28vw;
+  background-color: var(--shape-brown);
+  top: 45%;
+  left: 68%;
+  z-index: 2;
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, 20px); }
+}
+
+/* --- 内容区域 --- */
+.hero__content {
+  position: relative;
+  z-index: 10; /* 确保文字在所有圆圈最上方 */
+}
+
+.hero__inner {
+  max-width: 1000px;
+  text-align: left; /* 改为左对齐 */
+}
+
+/* 大标题共同样式 */
+.hero__main-title, 
+.hero__outline-title, 
+.hero__portfolio-title {
+  font-family: "Helvetica Neue", Arial, sans-serif; /* 建议用较粗的黑体 */
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.hero__main-title {
+  font-size: clamp(60px, 10vw, 140px);
+  font-weight: 900;
+  margin: 0;
+  color: var(--text-black);
+}
+
+.hero__outline-title {
+  font-size: clamp(60px, 10vw, 140px);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text-black);
+  margin: 10px 0 30px 0;
+}
+
+.hero__portfolio-title {
+    font-size: clamp(40px, 7vw, 90px);
+    font-weight: 900;
+    color: var(--text-black);
+    margin-bottom: 50px;
+    
+    /* --- [新增] 让每个字母之间有间距 --- */
+    letter-spacing: 0.01em; /* 调整字间距 */
+    margin-top: 10px;
+}
+
+/* 文字中的彩色字母 */
+.color-blue { color: #A5C9E8; }
+.color-green { color: #9AB7B1; }
+.color-yellow { color: #D4A35B; }
+
+
+/* --- 按钮样式重写 --- */
+.hero__cta {
+  display: flex;
+  gap: 20px;
+}
+
+.hero__cta .btn {
+  padding: 14px 35px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  /* 使用莫兰迪浅灰蓝 */
+  background-color: var(--shape-blue); 
+}
+
+.hero__cta .btn--outline {
+  /* “お問い合わせ” 也可以共用同色，或者只留边框 */
+  background-color: transparent;
+  border: 1.5px solid var(--shape-blue);
+}
+
+.hero__cta .btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(0.9);
+}
+
+.title-underline {
+  display: none; /* 彻底移除蓝色横线 */
+}
+
+/* 1. 针对所有 Hero 区域的按钮：统一设为黑色 */
+.hero__cta .btn {
+    color: #000 !important; /* 强制文字变成黑色 */
+}
+
+/* 2. 针对左边的实心按钮 (Primary) */
+.hero__cta .btn--primary {
+    /* 背景色保持原来的浅蓝色 (如果有变化请自行调整) */
+    background-color: var(--shape-blue, #E2E9F3); 
+}
+
+/* 3. 针对右边的线框按钮 (Outline) */
+.hero__cta .btn--outline {
+    /* 边框也改成黑色，与文字呼应 */
+    border: 1.5px solid #000;
+}
+
+
+/* --- 响应式适配 --- */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 80px;
+    padding-left: 5%;
+  }
+  .shape {
+    width: 60vw;
+    height: 60vw;
+  }
+}
+
+/* ==========================================================================
+   4. Works 区域 (更新版)
+   ========================================================================== */
+.works {
+    padding: 100px 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    /* 原来可能是 40px，建议改大到 60px 或 80px */
+    font-size: 60px; 
+    
+    /* 保持原有的其他样式不变 */
+    font-family: 'Times New Roman', serif; /* 如果你之前用了衬线体 */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+/* --- 上半部分: Web (2列) --- */
+.works-web-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2列 */
+    gap: 50px 40px;
+    margin-bottom: 80px; /* 与下方Graphic区域的间距 */
+}
+
+/* --- 下半部分: Graphic (3列) --- */
+.works-graphic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3列 */
+    gap: 40px 30px;
+}
+
+/* 通用 Work Item 样式 */
+.work-item {
+    display: block; /* 确保a标签也是块级 */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+}
+
+.work-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    background-color: #f0f0f0;
+    /* 图片比例控制: Web偏横向，Graphic偏方形 */
+    aspect-ratio: 16 / 10; 
+}
+
+/* 下面Graphic部分的图片可以稍微高一点 */
+.works-graphic-grid .work-image {
+    aspect-ratio: 4 / 3;
+}
+
+.work-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.work-item:hover .work-image img {
+    transform: scale(1.05);
+}
+
+/* 悬停时的遮罩层 (Web用) */
+.hover-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* 悬停时的图标 (Graphic用) */
+.hover-icon {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.6);
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.work-item:hover .hover-overlay,
+.work-item:hover .hover-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* icon reset */
+}
+.work-item:hover .hover-overlay {
+    transform: none; /* overlay reset */
+}
+
+/* 标签颜色 (根据设计图补充) */
+.work-category {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 50px;
+    font-size: 11px;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.category-yellow { background-color: #DFA454; }
+.category-green { background-color: #357266; } /* 深绿 */
+.category-blue { background-color: #6CA6E6; }
+.category-grey { background-color: rgba(66, 66, 66, 0.4); }
+
+.work-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    line-height: 1.4;
+    color: #000;
+}
+
+.work-desc {
+    font-size: 12px;
+    color: #888;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .works-web-grid {
+        grid-template-columns: 1fr; /* 手机上Web变单列 */
+        gap: 40px;
+    }
+    .works-graphic-grid {
+        grid-template-columns: repeat(2, 1fr); /* 手机上Graphic变两列 */
+        gap: 20px;
+    }
+}
+@media (max-width: 480px) {
+    .works-graphic-grid {
+        grid-template-columns: 1fr; /* 小屏全变单列 */
+    }
+}
+
+/* ==========================================================================
+   5. About 区域
+   ========================================================================== */
+.about {
+    padding: 100px 0 150px; /* 底部留多点空间给Footer重叠 */
+}
+
+/* 左側：プロフィール写真 */
+.about-photo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-frame {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 円形テキスト装飾 */
+.circle-text {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 160px;
+  height: 160px;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.circle-text svg {
+  width: 100%;
+  height: 100%;
+}
+
+.circle-text text {
+  fill: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  
+}
+
+/* About Layout - 左右分割 */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-4xl);
+  align-items: center;
+  margin-bottom: var(--space-4xl);
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* 右側：テキストコンテンツ */
+.about-content {
+  padding: var(--space-lg) ;
+  padding-left: 100px;
+}
+
+.about-title-wrapper {
+  display: block;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: 30px;
+}
+
+.about-line {
+  display: none;
+}
+
+.about-greeting {
+  font-family: 'Montserrat', sans-serif; /* 英文推荐字体 */
+  font-size: 32px;     /* 字号加大 (根据需要可调 32px - 40px) */
+  font-weight: 500;    /* 加粗 */
+  
+  /* --- 颜色与间距 --- */
+  color: #333;         /* 黑色 */
+  letter-spacing: 0.2em; /* 增加字间距，显得更有设计感 */
+  line-height: 1.2;
+  
+  /* --- 强制左对齐 --- */
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.about-text {
+  margin-bottom: var(--space-2xl);
+}
+
+.about-text p {
+  font-size: var(--font-size-base);
+  line-height: 2;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-lg);
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* 詳しく見るリンク */
+.about-cta {
+  margin-top: 80px;
+}
+
+.detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  text-decoration: none;
+  color: var(--color-primary);
+  font-size: 16px;
+  font-weight: 500;
+  transition: all var(--transition-base);
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.detail-link__circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.detail-link__circle svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor; /* 确保箭头颜色跟随 */
+    transition: stroke 0.3s ease;
+}
+
+.detail-link__text {
+  position: relative;
+  letter-spacing: 0.05em;
+}
+
+/* 下划线动画 (保留你原本的逻辑，稍微调整位置) */
+.detail-link__text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+/* --- 悬停效果优化 --- */
+.detail-link:hover {
+    opacity: 0.9;
+}
+
+.detail-link:hover .detail-link__circle {
+  /* 悬停时：背景变蓝，箭头变白 */
+  background: #357266; 
+  color: white;
+  
+  /* [修改] 使用缩放效果代替位移，更符合这个圆形的设计风格 */
+  transform: scale(1.05); 
+}
+
+.detail-link:hover .detail-link__text::after {
+  width: 100%;
+}
+
+
+/* About 响应式 */
+@media (max-width: 768px) {
+  .about-content {
+    /* 手机上下排列时，取消左边的大间距 */
+    padding-left: var(--space-lg); 
+    /* 或者直接 padding-left: 20px; */
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-layout {
+    gap: var(--space-3xl);
+  }
+  
+  .photo-frame {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    text-align: center;
+  }
+  
+  .photo-frame {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .circle-text {
+    width: 100px;
+    height: 100px;
+    top: -20px;
+    right: -20px;
+  }
+  
+  .about-title-wrapper {
+    justify-content: center;
+  }
+  
+  .about-line {
+    width: 40px;
+  }
+  
+  .about-greeting {
+    font-size: 28px; /* 手机上稍微小一点 */
+    margin-bottom: 20px;
+  }
+  
+  .about-cta {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   6. Contact & Footer (重叠布局)
+   ========================================================================== */
+.site-footer {
+    background-color: #357266; /* 这种深绿色 */
+    color: #fff;
+    padding-top: 150px; /* 为上面重叠的卡片留空间 */
+    padding-bottom: 50px;
+    position: relative;
+    margin-top: 100px;
+}
+
+/* 悬浮的 Contact 卡片 */
+.contact-card {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 60px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1); /* 柔和阴影 */
+    text-align: center;
+    
+    /* 关键布局：绝对定位或负边距实现重叠 */
+    position: absolute;
+    top: -100px; /* 向上偏移出Footer */
+    left: 0;
+    right: 0;
+    width: 80%; /* 卡片宽度 */
+    max-width: 900px;
+    margin: 0 auto; /* 水平居中 */
+}
+
+.contact-msg {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #333;
+    font-weight: 700;
+}
+
+.btn-green {
+    display: inline-flex;   /* 让图标和文字横向排列 */
+    align-items: center;    /* 垂直居中 */
+    justify-content: center;
+    gap: 12px;              /* 【关键】图标和文字之间的间距 */
+    
+    background-color: #4A7068; /* 使用更接近设计图的低饱和度深绿 */
+    color: #fff;
+    padding: 16px 45px;     /* 稍微加大一点内边距，更舒展 */
+    border-radius: 50px;    /* 胶囊圆角 */
+    
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.05em; /* 增加一点字间距 */
+    
+    transition: all 0.3s ease;
+    border: 1px solid transparent; /* 预留边框位置，防止抖动 */
+}
+
+/* 悬停效果 */
+.btn-green:hover {
+    background-color: #3b5c54; /* 稍微变深 */
+    transform: translateY(-3px); /* 向上浮动 */
+    box-shadow: 0 5px 15px rgba(53, 114, 102, 0.3); /* 增加绿色光晕阴影 */
+}
+
+/* 图标样式 */
+.icon-mail-svg {
+    width: 20px;       /* 控制图标大小 */
+    height: 20px;
+    display: block;    /* 防止基线对齐导致的微小偏移 */
+    stroke-width: 1.5; /* 线条粗细，1.5 比较精致，2 比较粗 */
+}
+
+/* Footer 底部内容 */
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 400; /* 取消粗体 */
+    line-height: 2.2; /* 增大行高 */
+    
+    /* 移除底部外边距，确保和右侧菜单完全底部对齐 */
+    margin-bottom: 0; 
+    
+    /* 确保容器紧贴文字，便于观察对齐 */
+    display: inline-block;
+}
+
+.footer-logo::first-line {
+    letter-spacing: 0.05em; 
+}
+
+
+.copyright {
+    font-size: 12px;
+    opacity: 0.6;
+    
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    gap: 15px;
+    padding-bottom: 5px;
+}
+
+.footer-nav a {
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.8;
+    text-decoration: none;
+    transition: opacity 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 10px;
+    opacity: 0.5;
+    text-align: center; /* 文字居中 */
+    display: block;     /* 独占一行 */
+    width: 100%;
+    margin-top: 40px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   7. 响应式适配 (Mobile)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .text-colorful {
+        letter-spacing: 5px; /* 手机上间距小一点 */
+        display: block; /* 手机上可能需要换行 */
+    }
+
+    .hero-bg-circles .circle {
+        transform: scale(0.6); /* 手机上圆圈缩小 */
+    }
+    
+    .works-grid {
+        grid-template-columns: 1fr; /* 单列 */
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .contact-card {
+        width: 90%;
+        padding: 30px;
+        top: -60px;
+    }
+    
+    .site-footer {
+        padding-top: 120px;
+    }
+    
+    .footer-main {
+    width: 100%;
+}
+
+    .footer-flex {
+        flex-direction: column;
+        align-items: center; /* 手机上居中对齐 */
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+    
+    .footer-nav {
+        text-align: center;
+        padding-bottom: 0;
+    }
+
+    .footer-logo::first-line {
+        letter-spacing: 0.15em;
+    }
+}
+
+/* ==========================================================================
+   8. 弹窗样式 (Modal / Lightbox) - 加到CSS文件末尾
+   ========================================================================== */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 90vh; /* 确保不超过视口高度 */
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2001;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #ccc;
+}
