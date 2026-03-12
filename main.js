@@ -1,9 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // ==============================================
+    // 0. Hero セクション ページ読み込みアニメーション（層次淡入＋浮き上がり）
+    // ==============================================
+    requestAnimationFrame(() => {
+        document.body.classList.add('hero-loaded');
+    });
+
+    // ==============================================
     // 1. スムーススクロール (ヘッダーの高さ分ずらす処理を追加)
     // ==============================================
-    const headerHeight = 80; // ヘッダーの高さ（調整可能）
+    const headerHeight = 80; 
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -13,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(href);
             
             if (target) {
-                // 要素の位置を取得し、ヘッダー分引く
                 const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerHeight;
     
@@ -28,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================================
     // 2. スクロール時のヘッダー背景制御 (UX向上)
     // ==============================================
-    // スクロールしたらヘッダーに白背景をつける
     const header = document.querySelector('.header');
     
     window.addEventListener('scroll', () => {
@@ -39,6 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             header.style.backgroundColor = 'transparent';
             header.style.boxShadow = 'none';
+        }
+    });
+
+    // ==============================================
+    // 2.5 ページトップへ戻るボタンの表示/非表示
+    // ==============================================
+    const backToTop = document.getElementById('back-to-top');
+    const scrollThreshold = 300;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > scrollThreshold) {
+            backToTop.classList.add('is-visible');
+        } else {
+            backToTop.classList.remove('is-visible');
         }
     });
 
@@ -55,18 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
-                // 一度表示されたら監視を解除（パフォーマンス向上）
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // 作品アイテムとAboutセクションにアニメーションを適用
     const animElements = document.querySelectorAll('.work-item, .about-content, .section-title');
     
     animElements.forEach(item => {
         item.style.opacity = '0';
-        item.style.transform = 'translateY(30px)'; // 少し下から浮き上がる
+        item.style.transform = 'translateY(30px)'; 
         item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         observer.observe(item);
     });
@@ -76,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================================
     document.querySelectorAll('.work-placeholder').forEach(item => {
         item.addEventListener('click', function() {
-            // data-work-url 属性がある場合のみ開く
             const workUrl = this.getAttribute('data-work-url');
             if (workUrl && workUrl !== "") {
                 window.open(workUrl, '_blank');
@@ -90,9 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==============================================
 // 5. ヘルパー関数: 将来作品を追加する用 (構造変更に対応)
 // ==============================================
-// Consoleで実行: updateWorkPlaceholder(0, 'img/new.jpg', 'Title', 'Desc', 'yellow')
 window.updateWorkPlaceholder = function(index, imageUrl, title, desc, colorType = 'yellow') {
-    // プレースホルダー要素のみを取得
     const placeholders = document.querySelectorAll('.work-item.work-placeholder');
     
     if (placeholders[index]) {
@@ -101,7 +115,6 @@ window.updateWorkPlaceholder = function(index, imageUrl, title, desc, colorType 
         const infoBox = item.querySelector('.work-info');
         
         // 1. 画像エリアを置き換え
-        // placeholder-box を work-image に変更
         const newImageDiv = document.createElement('div');
         newImageDiv.className = 'work-image';
         newImageDiv.innerHTML = `<img src="${imageUrl}" alt="${title}">`;
@@ -109,7 +122,6 @@ window.updateWorkPlaceholder = function(index, imageUrl, title, desc, colorType 
         item.replaceChild(newImageDiv, imageBox);
         
         // 2. テキスト情報を更新
-        // 色クラスの決定 (category-yellow, category-green など)
         const colorClass = `category-${colorType}`;
         
         infoBox.innerHTML = `
@@ -136,43 +148,36 @@ const modalImg = document.getElementById('modal-img');
 const closeBtn = document.querySelector('.modal-close');
 const triggers = document.querySelectorAll('.js-modal-trigger');
 
-// 打开弹窗
 triggers.forEach(item => {
     item.addEventListener('click', function() {
-        // 获取 data-full-img 属性中的大图路径，如果没有则使用 src
         const largeImgUrl = this.getAttribute('data-full-img') || this.querySelector('img').src;
         
         modalImg.src = largeImgUrl;
-        modal.style.display = 'flex'; // 先改为flex布局
+        modal.style.display = 'flex'; 
         
-        // 稍微延时加show类，触发CSS淡入动画
         setTimeout(() => {
             modal.classList.add('show');
         }, 10);
         
-        // 禁止背景滚动
         document.body.style.overflow = 'hidden';
     });
 });
 
-// 关闭弹窗 (点击X按钮)
 closeBtn.addEventListener('click', () => {
     closeModal();
 });
 
-// 关闭弹窗 (点击背景)
 modal.addEventListener('click', (e) => {
     if (e.target === modal) {
         closeModal();
     }
 });
 
-// 关闭函数
 function closeModal() {
     modal.classList.remove('show');
     setTimeout(() => {
         modal.style.display = 'none';
-        modalImg.src = ''; // 清空图片
-        document.body.style.overflow = 'auto'; // 恢复滚动
-    }, 300); // 等待动画结束
+        modalImg.src = ''; 
+        document.body.style.overflow = 'auto'; 
+    }, 300); 
 }

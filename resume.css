@@ -1,0 +1,540 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   履歴書ページ - トップページ（index.html）とスタイルを統一
+   ========================================================================== */
+
+/* トップページと同じカラー・フォント */
+:root {
+  --resume-primary: #357266;
+  --resume-primary-dark: #2d5d52;
+  --resume-primary-light: #4A7068;
+  --resume-text: #333;
+  --resume-text-light: #555;
+  --resume-text-lighter: #777;
+  --resume-bg: #fff;
+  --resume-bg-alt: #f5f5f5;
+  --resume-border: #e0e0e0;
+  --resume-radius: 12px;
+  --resume-radius-lg: 20px;
+  --resume-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --resume-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   ベース・ヘッダー
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+  color: var(--resume-text);
+  line-height: 1.8;
+  background-color: var(--resume-bg);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+/* ヘッダー：index の .header に合わせた配置 */
+.resume-header-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 24px 0;
+  background-color: var(--resume-bg);
+  border-bottom: 1px solid var(--resume-border);
+}
+
+.resume-header-inner {
+  max-width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resume-logo {
+  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #000;
+}
+
+.resume-logo:hover {
+  color: var(--resume-text);
+}
+
+.resume-nav {
+  display: flex;
+  align-items: center;
+}
+
+.resume-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--resume-text);
+}
+
+.resume-back-link:hover {
+  color: var(--resume-primary);
+}
+
+.resume-back-link svg {
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   メイン・コンテナ
+   -------------------------------------------------------------------------- */
+.resume-main {
+  min-height: 60vh;
+  padding: 48px 0 64px;
+}
+
+.resume-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+/* --------------------------------------------------------------------------
+   履歴書ヘッダー（タイトル・PDFボタン）
+   -------------------------------------------------------------------------- */
+.resume-header {
+  margin-bottom: 40px;
+}
+
+.resume-header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 3px solid var(--resume-primary);
+}
+
+.resume-title h1 {
+  font-size: clamp(1.75rem, 4vw, 2rem);
+  font-weight: 600;
+  color: var(--resume-text);
+  margin: 0 0 8px 0;
+}
+
+.resume-date {
+  font-size: 14px;
+  color: var(--resume-text-lighter);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   セクション共通
+   -------------------------------------------------------------------------- */
+.resume-section {
+  background: var(--resume-bg);
+  padding: 32px;
+  margin-bottom: 28px;
+  border-radius: var(--resume-radius-lg);
+  box-shadow: var(--resume-shadow);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--resume-text);
+  margin: 0 0 24px 0;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--resume-border);
+}
+
+.title-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: var(--resume-primary);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   基本情報グリッド
+   -------------------------------------------------------------------------- */
+.info-grid {
+  display: grid;
+  gap: 4px;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--resume-border);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--resume-text-lighter);
+}
+
+.info-value {
+  font-size: 15px;
+  color: var(--resume-text);
+}
+
+.info-value a {
+  color: var(--resume-primary);
+}
+
+.info-value a:hover {
+  color: var(--resume-primary-dark);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   タイムライン（学歴・職歴）
+   -------------------------------------------------------------------------- */
+.timeline {
+  position: relative;
+  padding-left: 200px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 118px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--resume-border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -82px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background: var(--resume-primary);
+  border: 3px solid var(--resume-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--resume-primary);
+}
+
+.timeline-date {
+  position: absolute;
+  left: -200px;
+  top: 0;
+  width: 100px;
+  padding-right: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--resume-text-light);
+  line-height: 1.4;
+}
+
+.timeline-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--resume-text);
+  margin: 0 0 8px 0;
+}
+
+.timeline-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--resume-text-light);
+  margin: 0 0 12px 0;
+}
+
+.timeline-achievements {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-achievements li {
+  font-size: 14px;
+  color: var(--resume-text-light);
+  padding-left: 20px;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.timeline-achievements li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--resume-primary);
+  font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   スキル
+   -------------------------------------------------------------------------- */
+.skills-container {
+  display: grid;
+  gap: 24px;
+}
+
+.skill-category {
+  padding: 20px;
+  background: var(--resume-bg-alt);
+  border-radius: var(--resume-radius);
+}
+
+.skill-category-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--resume-text);
+  margin: 0 0 20px 0;
+}
+
+.skill-category-title svg {
+  color: var(--resume-primary);
+  flex-shrink: 0;
+}
+
+.skill-list {
+  display: grid;
+  gap: 16px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.skill-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--resume-text);
+}
+
+.skill-level {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--resume-primary);
+}
+
+.skill-bar {
+  height: 8px;
+  background: var(--resume-border);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--resume-primary-light), var(--resume-primary));
+  border-radius: 50px;
+  transition: width 0.8s ease;
+}
+
+/* --------------------------------------------------------------------------
+   資格
+   -------------------------------------------------------------------------- */
+.cert-list {
+  display: grid;
+  gap: 12px;
+}
+
+.cert-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--resume-bg-alt);
+  border-radius: var(--resume-radius);
+  border-left: 4px solid var(--resume-primary);
+}
+
+.cert-date {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--resume-primary);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.cert-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--resume-text);
+}
+
+/* --------------------------------------------------------------------------
+   自己PR
+   -------------------------------------------------------------------------- */
+.pr-content {
+  display: grid;
+  gap: 20px;
+}
+
+.pr-block {
+  padding: 20px 24px;
+  background: var(--resume-bg-alt);
+  border-radius: var(--resume-radius);
+  border-left: 4px solid var(--resume-primary);
+}
+
+.pr-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--resume-text);
+  margin: 0 0 12px 0;
+}
+
+.pr-text {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--resume-text-light);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   フッター（index の .site-footer と同色）
+   -------------------------------------------------------------------------- */
+.resume-footer {
+  background-color: var(--resume-primary);
+  color: #fff;
+  padding: 40px 0;
+  margin-top: 24px;
+}
+
+.resume-footer-inner {
+  max-width: 100%;
+  padding: 0 5%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.resume-footer-copy {
+  font-size: 12px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.resume-footer-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.resume-footer-nav a {
+  color: #fff;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.resume-footer-nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   レスポンシブ
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .resume-main {
+    padding: 32px 0 48px;
+  }
+
+  .resume-header__content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .resume-section {
+    padding: 24px 20px;
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+    flex-wrap: wrap;
+  }
+
+  .title-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .timeline {
+    padding-left: 0;
+  }
+
+  .timeline::before {
+    left: 7px;
+  }
+
+  .timeline-item::before {
+    left: 0;
+  }
+
+  .timeline-date {
+    position: static;
+    width: auto;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  .resume-footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
