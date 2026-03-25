@@ -756,6 +756,7 @@
     height: auto;
     object-fit: contain;
     object-position: center;
+    background-color: #fff;
 }
 
 .wd-detail__p4-right {
