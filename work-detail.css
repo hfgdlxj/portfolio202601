@@ -748,7 +748,7 @@
 
 .wd-detail__body--p5x8-3col {
     display: grid;
-    grid-template-columns: 1fr 1fr 0.9fr;
+    grid-template-columns: 1fr 1fr 0.8fr;
     gap: 20px;
     align-items: start;
 }
