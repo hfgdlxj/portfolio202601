@@ -37,12 +37,12 @@
                 <h1 class="wd-hero__title">ブランジェリサイト「HAL Boulangerie」</h1>
                 <dl class="wd-hero__meta">
                     <div class="wd-hero__meta-row">
-                        <div class="wd-hero__meta-item"><dt>制作期間</dt><dd>2ヶ月（2025.12-2026.2）</dd></div>
+                        <div class="wd-hero__meta-item"><dt>制作期間</dt><dd>2ヶ月（2026.1-2）</dd></div>
                         <div class="wd-hero__meta-item"><dt>制作形式</dt><dd>個人制作</dd></div>
                     </div>
                     <div class="wd-hero__meta-row">
                         <div class="wd-hero__meta-item"><dt>役割</dt><dd>UI設計・フロントエンド実装</dd></div>
-                        <div class="wd-hero__meta-item"><dt>使用ツール</dt><dd>HTML / CSS / JS / Figma</dd></div>
+                        <div class="wd-hero__meta-item"><dt>使用ツール</dt><dd>TypeScript / React / HTML / CSS / JavaScript</dd></div>
                     </div>
                 </dl>
                 <div class="wd-view-site-wrap">
@@ -90,26 +90,51 @@
                         </div>
                         <div class="wd-detail__cell">
                             <img class="wd-detail__img" src="img/wd-4detail2.png" alt="2枚画像レイアウト・右">
-                            <p class="wd-detail__text-block">ナビゲーションはハンバーガーメニューを採用し、展開時には4つのメニュー項目を分かりやすく表示します。背景にはブラウンを用い、ベーカリーの雰囲気に調和した配色としました。</p>
+                            <p class="wd-detail__text-block">ナビゲーションはハンバーガーメニューを採用し、展開時には5つのメニュー項目を分かりやすく表示します。背景にはブラウンを用い、ベーカリーの雰囲気に調和した配色としました。</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="wd-detail__block wd-detail__block--pattern3-lr">
-                    <h3 class="wd-detail__subtitle">情報を分かりやすく伝える統一されたコンテンツ設計</h3>
+                    <h3 class="wd-detail__subtitle">メニュー導線を意識した商品紹介設計</h3>
                     <div class="wd-detail__body wd-detail__body--p3-lr">
                         <div class="wd-detail__p3-lr-left">
                             <img class="wd-detail__img" src="img/wd-4detail3.png" alt="左・縦長ビジュアル（5:11）">
-                            <p class="wd-detail__text-block">メニューでは、サイト全体で用いている円弧型のデザイン要素を継承し、左右交互に画像とテキストを配置して、おすすめ商品を紹介しています。ホバー時には該当商品の説明や価格が強調表示される仕組みとし、視覚的に分かりやすく、楽しみながら閲覧できるインタラクションを実現しました。</p>
                         </div>
-                        <div class="wd-detail__p3-lr-cell">
-                            <img class="wd-detail__img" src="img/wd-4detail4.png" alt="右上（5:2.5）">
-                            <p class="wd-detail__text-block">見出しデザインは全ページで統一し、店舗のイメージカラーである濃淡のブラウンを用いることで、落ち着きと高級感のある印象を演出しました。
-                                NEWSセクションはカード型レイアウトを採用し、情報を整理して読みやすさを高めるとともに、配色も全体と統一することで一貫性のあるデザインとしています。</p>
+                        <div class="wd-detail__p3-lr-cell wd-detail__p3-lr-cell--tall">
+                            <img class="wd-detail__img" src="img/wd-4detail6.png" alt="右・縦長ビジュアル（5:11）">
                         </div>
-                        <div class="wd-detail__p3-lr-cell">
-                            <img class="wd-detail__img" src="img/wd-4detail5.png" alt="右下（5:4.5）">
-                            <p class="wd-detail__text-block">Googleマップの埋め込みにより店舗位置を直感的に把握できるようにし、フッターには住所・電話番号・営業時間・交通手段を整理して配置しました。ユーザーが迷わず来店準備を行えるよう、情報の視認性と利便性を重視しています。</p>
+                        <p class="wd-detail__text-block wd-detail__p3-lr-note">メニューでは、サイト全体で用いている円弧型のデザイン要素を継承し、左右交互に画像とテキストを配置して、おすすめ商品を紹介しています。ホバー時には説明や価格を強調表示し、視覚的に分かりやすく閲覧できるようにしました。また、詳細ページでは商品を6つのカテゴリに分けて掲載し、店内の商品や特徴がひと目で伝わる構成としています。</p>
+                    </div>
+                </div>
+
+                <div class="wd-detail__block wd-detail__block--pattern4-split">
+                    <h3 class="wd-detail__subtitle">ギャラリーによる空間イメージの演出</h3>
+                    <div class="wd-detail__body wd-detail__body--p4-split">
+                        <video
+                            class="wd-detail__video"
+                            src="img/bread-gallery.mp4"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                            aria-label="GALLERY セクションの録画"
+                        >お使いのブラウザは動画をサポートしていません。</video>
+                        <p class="wd-detail__text-block">ギャラリーでは、店内外の写真を自動スライドで表示し、視覚的に空間の雰囲気が伝わるように構成しました。写真にあわせて店舗のコンセプトや想いを表現するテキストを配置することで、ユーザーに臨場感を与え、ブランドの世界観や上質な雰囲気を感じられるように設計しています。</p>
+                    </div>
+                </div>
+
+                <div class="wd-detail__block wd-detail__block--pattern2">
+                    <h3 class="wd-detail__subtitle">お問い合わせ機能と分かりやすい店舗案内</h3>
+                    <div class="wd-detail__body wd-detail__body--p2">
+                        <div class="wd-detail__cell">
+                            <img class="wd-detail__img" src="img/wd-4detail7.png" alt="左のビジュアル">
+                            <p class="wd-detail__text-block">Contactでは、お問い合わせフォームを実装し、テキスト入力や画像の送信に対応しました。右側にはFAQを掲載し、ユーザーが疑問をすぐに確認できるようにしています。</p>
+                        </div>
+                        <div class="wd-detail__cell">
+                            <img class="wd-detail__img" src="img/wd-4detail5.png" alt="右のビジュアル">
+                            <p class="wd-detail__text-block">Googleマップと営業カレンダーを配置し、店舗の場所や営業日を分かりやすく確認できるようにしました。フッターには住所・電話番号・営業時間・交通手段を整理して掲載しています。</p>
                         </div>
                     </div>
                 </div>
