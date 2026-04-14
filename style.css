@@ -967,13 +967,18 @@ body.hero-loaded .hero__cta {
     }
     
     .contact-card {
-        width: 90%;
-        padding: 30px;
-        top: -60px;
+        position: static;
+        top: auto;
+        width: calc(100% - 48px);
+        max-width: 100%;
+        padding: 40px 24px;
+        border-radius: 16px;
+        margin: 0 auto 0;
     }
     
     .site-footer {
-        padding-top: 120px;
+        padding-top: 40px;
+        margin-top: 40px;
     }
     
     .footer-main {
