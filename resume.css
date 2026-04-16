@@ -522,8 +522,12 @@ a:hover {
     left: 7px;
   }
 
+  .timeline-item {
+    padding-left: 22px;
+  }
+
   .timeline-item::before {
-    left: 0;
+    left: 1px;
   }
 
   .timeline-date {

@@ -145,39 +145,61 @@ window.updateWorkPlaceholder = function(index, imageUrl, title, desc, colorType 
 // ==============================================
 const modal = document.getElementById('image-modal');
 const modalImg = document.getElementById('modal-img');
+const modalCaption = document.getElementById('modal-caption');
 const closeBtn = document.querySelector('.modal-close');
+const prevBtn = document.getElementById('modal-prev');
+const nextBtn = document.getElementById('modal-next');
 const triggers = document.querySelectorAll('.js-modal-trigger');
 
-triggers.forEach(item => {
-    item.addEventListener('click', function() {
-        const largeImgUrl = this.getAttribute('data-full-img') || this.querySelector('img').src;
-        
-        modalImg.src = largeImgUrl;
-        modal.style.display = 'flex'; 
-        
-        setTimeout(() => {
-            modal.classList.add('show');
-        }, 10);
-        
-        document.body.style.overflow = 'hidden';
-    });
+let currentIndex = 0;
+
+function openModal(index) {
+    currentIndex = index;
+    const item = triggers[currentIndex];
+    modalImg.src = item.getAttribute('data-full-img') || item.querySelector('img').src;
+    modalCaption.textContent = item.getAttribute('data-caption') || '';
+
+    prevBtn.style.visibility = triggers.length > 1 ? 'visible' : 'hidden';
+    nextBtn.style.visibility = triggers.length > 1 ? 'visible' : 'hidden';
+
+    modal.style.display = 'flex';
+    setTimeout(() => { modal.classList.add('show'); }, 10);
+    document.body.style.overflow = 'hidden';
+}
+
+triggers.forEach((item, index) => {
+    item.addEventListener('click', () => openModal(index));
 });
 
-closeBtn.addEventListener('click', () => {
-    closeModal();
+prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openModal((currentIndex - 1 + triggers.length) % triggers.length);
 });
+
+nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openModal((currentIndex + 1) % triggers.length);
+});
+
+closeBtn.addEventListener('click', () => closeModal());
 
 modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        closeModal();
-    }
+    if (e.target === modal) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (modal.style.display !== 'flex') return;
+    if (e.key === 'ArrowLeft')  openModal((currentIndex - 1 + triggers.length) % triggers.length);
+    if (e.key === 'ArrowRight') openModal((currentIndex + 1) % triggers.length);
+    if (e.key === 'Escape')     closeModal();
 });
 
 function closeModal() {
     modal.classList.remove('show');
     setTimeout(() => {
         modal.style.display = 'none';
-        modalImg.src = ''; 
-        document.body.style.overflow = 'auto'; 
-    }, 300); 
+        modalImg.src = '';
+        modalCaption.textContent = '';
+        document.body.style.overflow = 'auto';
+    }, 300);
 }

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body class="hero-anim">
@@ -123,7 +123,9 @@
             </div>
 
             <div class="works-graphic-grid">
-                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork5.png">
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork5.png"
+                    data-caption="多様な図形を用いた文字レイアウトで、遊び心のある可愛らしい印象を表現しました。
+                    ブルーとイエローを基調に、メインビジュアルと調和した統一感のある配色に仕上げています。">
                     <div class="work-image">
                         <img src="img/allwork5.png" alt="Graphic1">
                         <div class="hover-icon">
@@ -139,7 +141,9 @@
                     </div>
                 </div>
 
-                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork14.jpg">
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork14.jpg"
+                    data-caption="流れるような筆文字を縦組みで配置し、和の上品さと落ち着いた雰囲気を表現しました。
+                    白文字をアクセントとすることで、夜景に映える温かみのある印象に仕上げています。">
                     <div class="work-image">
                         <img src="img/allwork14.jpg" alt="Graphic2">
                         <div class="hover-icon">
@@ -155,7 +159,9 @@
                     </div>
                 </div>
 
-                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork6.jpg">
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork6.jpg"
+                    data-caption="花を主役に据え、背景をぼかすことで自然に視線が集まる構成としました。
+                    白文字をさりげなく配置し、上品さと画面全体の洗練された印象を高めています。">
                     <div class="work-image">
                         <img src="img/allwork6.jpg" alt="Graphic3">
                         <div class="hover-icon">
@@ -171,7 +177,9 @@
                     </div>
                 </div>
 
-                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork9.png">
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork9.png"
+                    data-caption="都市設計コンペ作品として、平面計画・立体模型制作・分析資料のレイアウトまで一貫して担当しました。
+                    企画から表現まで幅広く携わり、最終的に優秀賞を受賞しました。">
                     <div class="work-image">
                         <img src="img/allwork9.png" alt="Graphic4">
                         <div class="hover-icon">
@@ -187,7 +195,9 @@
                     </div>
                 </div>
 
-                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork12.png">
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork12.png"
+                    data-caption="都市設計プロジェクトにて、計画案の検討・平面図作成・パース制作を担当しました。
+                    チームで協働しながら、提案内容の具体化に携わりました。">
                     <div class="work-image">
                         <img src="img/allwork12.png" alt="Graphic5">
                         <div class="hover-icon">
@@ -203,7 +213,8 @@
                     </div>
                 </div>
 
-                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork11.png">
+                <div class="work-item graphic-item js-modal-trigger" data-full-img="img/allwork11.png"
+                    data-caption="都市景観や建築を対象に、ペン・マーカーを用いた模写およびスケッチを制作しました。構図を意識しながら描くことで、空間把握力や観察力、ビジュアル表現力を培いました。">
                     <div class="work-image">
                         <img src="img/allwork11.png" alt="Graphic6">
                         <div class="hover-icon">
@@ -317,12 +328,23 @@
 
     <div id="image-modal" class="modal">
         <span class="modal-close">&times;</span>
+        <button class="modal-nav modal-nav--prev" id="modal-prev" aria-label="前の画像">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </button>
         <div class="modal-content">
             <img id="modal-img" src="" alt="">
+            <p id="modal-caption" class="modal-caption">　</p>
         </div>
+        <button class="modal-nav modal-nav--next" id="modal-next" aria-label="次の画像">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+            </svg>
+        </button>
     </div>
 
-    <script src="main.js"></script>
+    <script src="main.js?v=3"></script>
 
 </body>
 </html>
